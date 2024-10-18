@@ -3,6 +3,7 @@ import { routes } from "./routes"; // Mengimpor rute-rute aplikasi dari file rou
 import { logger } from "./utils/logger"; // Mengimpor logger untuk logging
 import bodyParser from "body-parser"; // Mengimpor body-parser untuk mem-parsing body request
 import cors from "cors"; // Mengimpor cors untuk menangani permintaan lintas asal (cross-origin)
+import './utils/connectDB'; // Mengimpor fungsi connectDB untuk menghubungkan ke database MongoDB
 
 const app: Application = express(); // Membuat instance aplikasi express
 const port: Number = 4000; // Mendefinisikan port server yang akan digunakan
