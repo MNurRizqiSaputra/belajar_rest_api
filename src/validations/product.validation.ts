@@ -1,17 +1,15 @@
 import Joi from "joi"; // Mengimpor Joi untuk validasi skema data
+import  ProductType  from "../types/product.type"; // Mengimpor tipe produk dari file product.type.ts. untuk mendefinisikan struktur tipe data produk
 
-// Interface untuk mendefinisikan tipe data produk
-interface ProductInterface {
-    name: string; // Nama produk harus berupa string
-    price: number; // Harga produk harus berupa angka
-}
 
 // Fungsi untuk validasi data produk menggunakan Joi
-export const createProductValidation = (payload: ProductInterface) => {
+export const createProductValidation = (payload: ProductType) => {
     // Definisi skema validasi menggunakan Joi
     const schema = Joi.object({
+        product_id: Joi.string().required(), // Product ID harus berupa string dan wajib diisi
         name: Joi.string().required(), // Name harus berupa string dan wajib diisi
-        price: Joi.number().allow('', null) // Price boleh berupa angka, string kosong, atau null
+        price: Joi.number().allow('', null), // Price boleh berupa angka, string kosong, atau null
+        size: Joi.string().allow('', null) // Size harus berupa string kosong, atau null
     });
 
     // Melakukan validasi payload (data produk) sesuai dengan skema yang sudah didefinisikan

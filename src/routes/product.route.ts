@@ -6,8 +6,8 @@ export const ProductRouter: Router = Router(); // Inisialisasi router yang akan 
 // Mendefinisikan route GET untuk mengambil semua produk
 ProductRouter.get("/", getProduct); // Ketika URL "/product" dipanggil, fungsi getProduct akan dijalankan
 
-// Mendefinisikan route GET untuk mengambil produk berdasarkan nama
-ProductRouter.get('/:name', getProduct); // Ketika URL "/product/:name" dipanggil, fungsi getProduct akan dijalankan dan mencari produk berdasarkan nama
+// Mendefinisikan route GET untuk mengambil produk berdasarkan ID
+ProductRouter.get('/:id', getProduct); // Ketika URL "/product/:product_id" dipanggil, fungsi getProduct akan dijalankan dan mencari produk berdasarkan ID
 
 // Mendefinisikan route POST untuk membuat produk baru
 ProductRouter.post("/", createProduct); // Ketika URL "/product" dipanggil dengan metode POST, fungsi createProduct akan dijalankan untuk menambahkan produk baru

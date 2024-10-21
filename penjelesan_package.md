@@ -1,0 +1,22 @@
+### Penjelasan package.json
+
+- **"start"**: Menjalankan TypeScript compiler dalam mode watch, mengawasi perubahan file.
+- **"dev"**: Menggunakan nodemon untuk mengawasi perubahan dan otomatis me-restart server saat ada perubahan.
+- **"build"**: Melakukan kompilasi TypeScript ke JavaScript tanpa mode watch.
+- **"devDependencies"**:
+  - `@types/cors`, `@types/express`: Definisi tipe untuk TypeScript terkait cors dan express.
+  - `ts-node`: Menjalankan TypeScript secara langsung tanpa perlu kompilasi manual.
+  - `typescript`: Compiler untuk TypeScript.
+- **"dependencies"**:
+  - `body-parser`: Middleware untuk parsing body request di express.
+  - `cors`: Middleware untuk menangani Cross-Origin Resource Sharing (CORS).
+  - `express`: Framework web untuk Node.js.
+  - `joi`: Library untuk validasi data.
+  - `moment`: Library untuk manipulasi dan format tanggal/waktu.
+  - `nodemon`: Tool yang otomatis me-restart aplikasi saat ada perubahan file.
+  - `pino`, `pino-pretty`: Logger yang cepat dan efisien, serta tool untuk memperindah tampilan log.
+  - `mongodb`: Driver resmi MongoDB untuk Node.js. Digunakan untuk berinteraksi langsung dengan database MongoDB, menjalankan query, dan operasi CRUD lainnya.
+  - `mongoose`: Object Data Modeling (ODM) library untuk MongoDB dan Node.js. Mongoose memudahkan untuk memodelkan data menggunakan skema yang terstruktur, menyediakan API yang kuat untuk pengelolaan database.
+  - `dotenv`: digunakan untuk memuat variabel lingkungan dari file `.env` ke dalam aplikasi Node.js. Dalam proyek ini, `dotenv/config` diimpor secara langsung di file `environment.ts`, sehingga variabel-variabel yang didefinisikan di file `.env` (seperti URL database) dapat diakses melalui `process.env`. Objek `CONFIG` dibuat untuk menyimpan konfigurasi URL database dan diekspor agar bisa digunakan di bagian lain dari aplikasi.
+  - - **`uuid`**:
+  - `uuid` adalah library untuk menghasilkan Universally Unique Identifier (UUID). UUID sering digunakan sebagai ID unik untuk entitas dalam aplikasi, yang menjamin bahwa setiap nilai yang dihasilkan tidak akan bentrok meskipun dibuat pada waktu yang sama di berbagai sistem atau proses. Dalam proyek ini, `uuid` bisa digunakan untuk membuat ID unik misalnya untuk identifikasi data secara unik di database atau pengelolaan sesi.
