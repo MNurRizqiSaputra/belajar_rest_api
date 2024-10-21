@@ -32,7 +32,7 @@ export const getProductById = async (id: string) => {
 
 // Fungsi untuk mengupdate data produk
 export const updateProductById = async (id: string, payload: ProductType) => {
-    return await productModel
+    const result = await productModel
         .findOneAndUpdate( // Mencari dan memperbarui dokumen berdasarkan ID
             { 
                 product_id: id // Menggunakan ID sebagai kriteria pencarian,
@@ -41,4 +41,16 @@ export const updateProductById = async (id: string, payload: ProductType) => {
                 $set: payload // Mengubah data produk yang diperbarui
             }
         )
-    };
+    return result
+};
+
+// Fungsi untuk menghapus data produk
+export const deleteProductById = async (id: string) => {
+    const result = await productModel
+        .findOneAndDelete( // Mencari dan menghapus dokumen berdasarkan ID
+            { 
+                product_id: id // Menggunakan ID sebagai kriteria pencarian
+            }
+        )
+    return result
+};

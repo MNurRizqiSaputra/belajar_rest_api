@@ -1,5 +1,5 @@
 import { Router } from "express"; // Mengimpor tipe Router dari express
-import { createProduct, getProduct, updateProduct } from "../controllers/product.controller"; // Mengimpor controller untuk menangani pembuatan dan pengambilan produk
+import { createProduct, getProduct, updateProduct, deleteProduct } from "../controllers/product.controller"; // Mengimpor controller untuk menangani perubahan produk dalam database MongoDB
 
 export const ProductRouter: Router = Router(); // Inisialisasi router yang akan mengarah ke src\routes\index.ts
 
@@ -14,3 +14,6 @@ ProductRouter.post("/", createProduct); // Ketika URL "/product" dipanggil denga
 
 // Mendefinisikan route PUT untuk mengupdate produk
 ProductRouter.put("/:id", updateProduct); // Ketika URL "/product/:product_id" dipanggil dengan metode PUT, fungsi updateProduct akan dijalankan untuk mengupdate produk
+
+// Mendefinisikan route DELETE untuk menghapus produk
+ProductRouter.delete("/:id", deleteProduct); // Ketika URL "/product/:product_id" dipanggil dengan metode DELETE, fungsi updateProduct akan dijalankan untuk menghapus produk
