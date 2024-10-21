@@ -30,3 +30,15 @@ export const getProductById = async (id: string) => {
         )
 };
 
+// Fungsi untuk mengupdate data produk
+export const updateProductById = async (id: string, payload: ProductType) => {
+    return await productModel
+        .findOneAndUpdate( // Mencari dan memperbarui dokumen berdasarkan ID
+            { 
+                product_id: id // Menggunakan ID sebagai kriteria pencarian,
+            }, 
+            {
+                $set: payload // Mengubah data produk yang diperbarui
+            }
+        )
+    };

@@ -1,5 +1,5 @@
 import { Router } from "express"; // Mengimpor tipe Router dari express
-import { createProduct, getProduct } from "../controllers/product.controller"; // Mengimpor controller untuk menangani pembuatan dan pengambilan produk
+import { createProduct, getProduct, updateProduct } from "../controllers/product.controller"; // Mengimpor controller untuk menangani pembuatan dan pengambilan produk
 
 export const ProductRouter: Router = Router(); // Inisialisasi router yang akan mengarah ke src\routes\index.ts
 
@@ -11,3 +11,6 @@ ProductRouter.get('/:id', getProduct); // Ketika URL "/product/:product_id" dipa
 
 // Mendefinisikan route POST untuk membuat produk baru
 ProductRouter.post("/", createProduct); // Ketika URL "/product" dipanggil dengan metode POST, fungsi createProduct akan dijalankan untuk menambahkan produk baru
+
+// Mendefinisikan route PUT untuk mengupdate produk
+ProductRouter.put("/:id", updateProduct); // Ketika URL "/product/:product_id" dipanggil dengan metode PUT, fungsi updateProduct akan dijalankan untuk mengupdate produk

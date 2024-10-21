@@ -1,7 +1,7 @@
 import { Request, Response } from "express"; // Mengimpor tipe Request dan Response dari express
-import { createProductValidation } from "../validations/product.validation"; // Mengimpor validasi untuk membuat produk
+import { createProductValidation, updateProductValidation } from "../validations/product.validation"; // Mengimpor validasi untuk membuat produk
 import { logger } from "../utils/logger"; // Mengimpor logger untuk logging
-import { addProductToDB, getProductById, getProductFromDB } from "../services/product.service"; // Mengimpor fungsi untuk mendapatkan produk dari database MongoDB
+import { addProductToDB, getProductById, getProductFromDB, updateProductById } from "../services/product.service"; // Mengimpor fungsi untuk mendapatkan produk dari database MongoDB
 import { v4 as uuidv4 } from "uuid"; // Mengimpor fungsi v4 dari uuid untuk menghasilkan ID unik
 
 
@@ -86,3 +86,36 @@ export const getProduct = async (req: Request, res: Response) => { // Menggunaka
     }
 
 };
+
+// Fungsi untuk mengupdate produk
+export const updateProduct = async (req: Request, res: Response) => {
+    const {
+        params: { id },
+    } = req;
+
+    // Melakukan validasi terhadap data yang dikirim melalui body request
+    const { error, value } = updateProductValidation(req.body);
+
+    // Jika terjadi kesalahan dalam validasi, kirim respon error dengan status 422 (Unprocessable Entity)
+    if (error) {
+        logger.error("ERR: product - update product", error.details[0].message); // Logging error
+        res.status(422).send({
+            status: false, // Status validasi gagal
+            statusCode: 422, // Kode status 422
+            message: error.details[0].message, // Pesan error dari validasi
+        });
+        return; // Menghentikan eksekusi fungsi
+    }
+
+    try {
+        await updateProductById(id,value)
+        // Jika berhasil mengupdate produk, kirim respon sukses
+        logger.info("Success update product"); // Logging sukses
+        res.status(200).send({
+            status: true, // Status sukses
+            statusCode: 200, // Kode status 201 (OK)
+            message: "Success update product", // Pesan sukses
+        });
+    } catch (err) {
+    }
+}
